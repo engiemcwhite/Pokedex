@@ -1,0 +1,38 @@
+*{
+    margin:0px;
+    padding:0px;
+}
+
+.wrapper{
+    width: 970px;
+    display: inline-block;
+}
+
+.chooser{
+    width: 700px;
+    display: inline-block;
+}
+
+.dex{
+    width: 200px; 
+    height: 280px;
+    border: 10px solid red;
+    padding: 20px;
+    display: inline-block;
+    vertical-align: top;
+    position: fixed;
+}
+
+h2{
+    text-align: center;
+}
+
+h4{
+    margin-top: 10px;
+}
+
+ul{
+    margin-left: 20px;
+}
+
+

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <title>PokemonList</title>
+    <link rel="stylesheet" type="text/css" href="style.css">
+    <script>
+        $(document).ready(function(){
+            for(var i=1;i<152;i++){
+                $(".chooser").append("<img class='poke' dexnum='"+i+"'src='http://pokeapi.co/media/img/"+i+".png' alt='pokemon'>");
+            }
+        })
+
+        $(document).on('click', '.poke',function(){
+            $.get("https://pokeapi.co/api/v2/pokemon/"+$(this).attr("dexnum")+"/",function(res){
+                var htmlstr = ""; 
+                htmlstr = "<h2>"+res.name+"</h2>";
+                htmlstr += "<img src='"+res.sprites.front_default+"' alt='pokemon of choice'>";
+                htmlstr += "<h4>Types</h4>";
+                htmlstr += "<ul>"; 
+                for(var i = 0; i < res.types.length; i++) {
+                     htmlstr += "<li>" + res.types[i].type.name + "</li>";
+                 }
+                htmlstr += "</ul>";
+                htmlstr += "<h4>Height</h4>";
+                htmlstr += res.height;
+                htmlstr += "<h4>Weight</h4>";
+                htmlstr += res.weight;
+                $(".dex").html(htmlstr);
+            },"json");
+        })
+    </script>
+</head>
+<body>
+    <div class="wrapper">
+        <div class="chooser"></div>
+        <div class="dex"></div>
+    </div>
+</body>
+</html>
